@@ -1,4 +1,3 @@
-// src/lib/useColabExports.ts
 import { useCallback, useState } from "react";
 import type { PlotlySpec } from "./types";
 
@@ -43,11 +42,6 @@ function addCacheBust(url: string) {
   return `${url}?t=${Date.now()}`;
 }
 
-/**
- * useColabExports
- * Зарежда артефактите, експортирани от Colab, от /public/colab-exports.
- * Връща { state, refresh }.
- */
 export function useColabExports(base = "/colab-exports") {
   const [state, setState] = useState<State>(INITIAL_STATE);
 
@@ -59,7 +53,6 @@ export function useColabExports(base = "/colab-exports") {
       `${base}/table_preview.json`
     );
 
-    // 2) figures (JSON → PlotlySpec, иначе PNG fallback)
     const names: ColabVizName[] = ["heatmap", "stacked_bar", "boxplot"];
     const figures: Record<ColabVizName, FigureSlot> = {
       heatmap: {},

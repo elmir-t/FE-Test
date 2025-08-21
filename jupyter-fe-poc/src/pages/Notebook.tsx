@@ -44,7 +44,6 @@ export default function Notebook() {
   controllerRef.current = { start, cancel, simulateError };
 
   useEffect(() => {
-    // При успешно refresh от Colab — визуализирай preview от файловете
     if (state.preview) setPreview(state.preview);
   }, [state.preview]);
 
@@ -64,7 +63,6 @@ export default function Notebook() {
     setPhase("idle");
     setProgress(0);
     setLiveSpec(null);
-    // Оставяме preview от Colab да си остане, не го чистим
     toast.success("Reset.");
   };
 
@@ -82,7 +80,6 @@ export default function Notebook() {
   };
 
   const viewExports = () => {
-    // Отвори най-често използваните файлове в нови табове (ако ги има)
     const files = [
       "/colab-exports/manifest.json",
       "/colab-exports/table_preview.json",

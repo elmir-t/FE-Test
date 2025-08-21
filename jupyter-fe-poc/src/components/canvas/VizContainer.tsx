@@ -5,13 +5,12 @@ import Plotly from "plotly.js-dist-min";
 type Props = {
   phase: Phase;
   progress?: number;
-  plotlySpec?: PlotlySpec | null; // ако липсва → показваме празно състояние
+  plotlySpec?: PlotlySpec | null;
 };
 
 export default function VizContainer({ phase, progress, plotlySpec }: Props) {
   const divRef = useRef<HTMLDivElement | null>(null);
 
-  // Рендър само ако имаме подаден spec (без auto-fetch вътре)
   useEffect(() => {
     const el = divRef.current;
     if (!el) return;
