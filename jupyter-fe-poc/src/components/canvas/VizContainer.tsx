@@ -5,13 +5,13 @@ import Plotly from "plotly.js-dist-min";
 type Props = {
   phase: Phase;
   progress?: number;
-  plotlySpec: PlotlySpec | null;
+  plotlySpec?: PlotlySpec | null; // ако липсва → показваме празно състояние
 };
 
 export default function VizContainer({ phase, progress, plotlySpec }: Props) {
   const divRef = useRef<HTMLDivElement | null>(null);
 
-  // Render chart when spec changes
+  // Рендър само ако имаме подаден spec (без auto-fetch вътре)
   useEffect(() => {
     const el = divRef.current;
     if (!el) return;
@@ -26,7 +26,6 @@ export default function VizContainer({ phase, progress, plotlySpec }: Props) {
         Plotly.purge(el);
       };
     } else {
-      // No spec → clear container
       el.innerHTML = "";
     }
   }, [plotlySpec]);
@@ -38,7 +37,6 @@ export default function VizContainer({ phase, progress, plotlySpec }: Props) {
         <span className="text-xs text-slate-500">Center panel</span>
       </div>
 
-      {/* Progress bar */}
       {(phase === "running" || phase === "processing") && (
         <div className="h-1 w-full bg-slate-100 rounded mb-2 overflow-hidden">
           <div
@@ -49,17 +47,15 @@ export default function VizContainer({ phase, progress, plotlySpec }: Props) {
       )}
 
       <div className="h-[420px] rounded-lg border border-dashed border-slate-300 bg-slate-50/50 p-2">
-        {/* Plotly mount point */}
         <div ref={divRef} className="h-full w-full" />
 
-        {/* Empty state overlay */}
         {!plotlySpec && (
           <div className="grid place-items-center h-full -mt-[420px] pointer-events-none">
             <div className="text-center text-sm text-slate-600 px-6">
               <p className="font-medium mb-1">No chart yet</p>
               <p>
                 Click <span className="font-semibold">Run</span> to simulate a
-                workflow.
+                workflow (the mock stream will provide a Plotly spec).
               </p>
               <p className="mt-2 text-xs text-slate-500">
                 Current phase: <code>{phase}</code>

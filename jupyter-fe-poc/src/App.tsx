@@ -106,8 +106,18 @@ export default function App() {
             <span className="text-slate-900">DAP</span>{" "}
             <span className="text-slate-400">-</span>{" "}
             <span className="text-slate-700">Jupyter UI POC</span>
+            <span className="ml-3 text-xs text-slate-500">(Canvas)</span>
           </h1>
+
           <div className="flex items-center gap-2">
+            {/* Link to Notebook */}
+            <a
+              href="/notebook"
+              className="px-3.5 py-2 rounded-md border border-slate-300 bg-white text-slate-800 hover:bg-slate-50 text-sm"
+            >
+              Open Notebook
+            </a>
+
             <Button variant="primary" onClick={onRun}>
               Run
             </Button>
@@ -118,7 +128,7 @@ export default function App() {
               Reset
             </Button>
 
-            {/* Export dropdown */}
+            {/* Export dropdown unchanged */}
             <div className="relative" ref={exportRef}>
               <Button
                 variant="outline"
