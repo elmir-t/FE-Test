@@ -1,0 +1,20 @@
+{
+  "table_preview": "table_preview.json",
+  "figures": {
+    "heatmap": [
+      "heatmap.json",
+      "heatmap.png",
+      "heatmap.svg"
+    ],
+    "stacked_bar": [
+      "stacked_bar.json",
+      "stacked_bar.png",
+      "stacked_bar.svg"
+    ],
+    "boxplot": [
+      "boxplot.json",
+      "boxplot.png",
+      "boxplot.svg"
+    ]
+  }
+}

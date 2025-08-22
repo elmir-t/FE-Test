@@ -19,7 +19,6 @@ node_modules/
 !.yarn/versions
 
 # Build output
-dist/
 dist-ssr/
 *.local
 
@@ -60,4 +59,3 @@ Thumbs.db
 .vercel
 .netlify
 .turbo
-``
